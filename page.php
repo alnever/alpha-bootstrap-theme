@@ -17,23 +17,20 @@
 		<?php if (have_posts()):  ?>
 			<div class="row m-0">
 				<?php while(have_posts()): the_post(); ?>
-					<div class="col-4 pb-2">
+					<div class="col-12 pb-2 border border-info rounded">
 						<?php if (has_post_thumbnail()): ?>
 							<img src="<?php the_post_thumbnail_url(); ?>" />
 						<?php endif; ?>
-						<h3><?php the_title(); ?></h3>
+						<h1><?php the_title(); ?></h1>
 						<div class="">
 								<span><?php the_date(); ?></span>
 								<span><?php the_author_link(); ?></span>
 						</div>
-
-						<p><?php the_excerpt(); ?></p>
+            <hr>
+						<p><?php the_content(); ?></p>
+            <hr>
 						<p><?php the_category(); ?></p>
-						<div class="d-flex flex-row justify-content-end">
-							<a href="<?php the_permalink(); ?>" class="btn btn-outline-primary">
-								<?php _e('More...', 'alpha'); ?>
-							</a>
-						</div>
+						<p><?php the_tags(); ?></p>
 					</div>
 				<?php endwhile; ?>
 			</div>

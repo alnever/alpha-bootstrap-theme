@@ -2,9 +2,7 @@
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+@import "wp-basic";
 @import "wp-menu";
-
-img {
-	max-width: 100%;
-	height: auto;
-}
+@import "wp-pagination";
+@import "wp-categories";

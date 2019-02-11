@@ -11,10 +11,6 @@
 		return module = { exports: {} }, fn(module, module.exports), module.exports;
 	}
 
-	function getCjsExportFromNamespace (n) {
-		return n && n.default || n;
-	}
-
 	/**!
 	 * @fileOverview Kickass library to create and place poppers near their reference elements.
 	 * @version 1.14.7
@@ -2593,11 +2589,6 @@
 	Popper.Utils = (typeof window !== 'undefined' ? window : global).PopperUtils;
 	Popper.placements = placements;
 	Popper.Defaults = Defaults;
-	//# sourceMappingURL=popper.js.map
-
-	var popper = /*#__PURE__*/Object.freeze({
-		default: Popper
-	});
 
 	var jquery = createCommonjsModule(function (module) {
 	/*!
@@ -12933,8 +12924,6 @@
 	} );
 	});
 
-	var require$$0 = getCjsExportFromNamespace(popper);
-
 	var bootstrap = createCommonjsModule(function (module, exports) {
 	/*!
 	  * Bootstrap v4.2.1 (https://getbootstrap.com/)
@@ -12942,9 +12931,9 @@
 	  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
 	  */
 	(function (global, factory) {
-	  factory(exports, require$$0, jquery);
-	}(commonjsGlobal, (function (exports,Popper,$) {
-	  Popper = Popper && Popper.hasOwnProperty('default') ? Popper['default'] : Popper;
+	  factory(exports, Popper, jquery);
+	}(commonjsGlobal, (function (exports,Popper$$1,$) {
+	  Popper$$1 = Popper$$1 && Popper$$1.hasOwnProperty('default') ? Popper$$1['default'] : Popper$$1;
 	  $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
 
 	  function _defineProperties(target, props) {
@@ -14562,7 +14551,7 @@
 	         * Check for Popper dependency
 	         * Popper - https://popper.js.org
 	         */
-	        if (typeof Popper === 'undefined') {
+	        if (typeof Popper$$1 === 'undefined') {
 	          throw new TypeError('Bootstrap\'s dropdowns require Popper.js (https://popper.js.org/)');
 	        }
 
@@ -14585,7 +14574,7 @@
 	          $(parent).addClass(ClassName$4.POSITION_STATIC);
 	        }
 
-	        this._popper = new Popper(referenceElement, this._menu, this._getPopperConfig());
+	        this._popper = new Popper$$1(referenceElement, this._menu, this._getPopperConfig());
 	      } // If this is a touch-enabled device we add extra
 	      // empty mouseover listeners to the body's immediate children;
 	      // only needed because of broken event delegation on iOS
@@ -15623,7 +15612,7 @@
 	       * Check for Popper dependency
 	       * Popper - https://popper.js.org
 	       */
-	      if (typeof Popper === 'undefined') {
+	      if (typeof Popper$$1 === 'undefined') {
 	        throw new TypeError('Bootstrap\'s tooltips require Popper.js (https://popper.js.org/)');
 	      } // private
 
@@ -15757,7 +15746,7 @@
 	        }
 
 	        $(this.element).trigger(this.constructor.Event.INSERTED);
-	        this._popper = new Popper(this.element, tip, {
+	        this._popper = new Popper$$1(this.element, tip, {
 	          placement: attachment,
 	          modifiers: {
 	            offset: {
@@ -17181,7 +17170,7 @@
 	  Object.defineProperty(exports, '__esModule', { value: true });
 
 	})));
-	//# sourceMappingURL=bootstrap.js.map
+
 	});
 
 	unwrapExports(bootstrap);
@@ -17202,6 +17191,28 @@
 			$(this).siblings('ul.sub-menu').addClass('dropdown-menu');
 
 			$(this).siblings('ul.sub-menu').attr('aria-labelledby', $(this).attr('id'));
+
+			dropdownCount++;
+		});
+	});
+
+
+	$(function() {
+		var dropdownCount = 1;
+
+		$("li.page_item_has_children > a").each(function() {
+
+			$(this).attr('href',"#");
+			$(this).attr('role','button');
+			$(this).attr('data-toggle','dropdown');
+			$(this).attr('aria-haspopup','true');
+			$(this).attr('aria-expanded','false');
+
+			$(this).attr('id','navbarDropdown' + dropdownCount);
+
+			$(this).siblings('ul.children').addClass('dropdown-menu');
+
+			$(this).siblings('ul.children').attr('aria-labelledby', $(this).attr('id'));
 
 			dropdownCount++;
 		});

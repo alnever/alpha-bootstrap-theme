@@ -1,0 +1,13 @@
+ul.post-categories {
+
+  padding-left: 0;
+  li {
+    display: inline-flex;
+    list-style-type: none;
+    & > a{
+      @extend .badge;
+      @extend .badge-secondary;
+      @extend .badge-pill;
+    }
+  }
+}

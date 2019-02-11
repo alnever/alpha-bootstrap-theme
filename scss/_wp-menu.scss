@@ -27,3 +27,33 @@ ul.menu {
     } /* li.menu-item-has-children */
   } /* li.menu-item */
 } /* ul.menu */
+
+div.menu > ul {
+  @extend .navbar-nav;
+  & > li.page_item {
+    @extend .nav-item;
+
+    & > a {
+      @extend .nav-link;
+    }
+
+    /* 2nd level */
+    &.page_item_has_children {
+      @extend .dropdown;
+
+      & > a {
+        @extend .nav-link;
+        @extend .dropdown-toggle;
+      }
+
+      & > ul.children {
+        @extend .dropdown-menu;
+
+        & > li > a {
+          @extend .dropdown-item;
+        }
+
+      }/* li.page_item_has_children > ul.children */
+    } /* li.page_item_has_children */
+  } /* li.page_item */
+} /* ul.menu */
