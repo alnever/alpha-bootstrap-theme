@@ -5,7 +5,6 @@
 		var dropdownCount = 1;
 
 		$("li.menu-item-has-children > a").each(function() {
-			console.log(dropdownCount);
 
 			$(this).attr('href',"#");
 			$(this).attr('role','button');
@@ -21,6 +20,13 @@
 
 			dropdownCount++;
 		});
+	});
+
+	$(function() {
+		$('.page-numbers').addClass('page-link');
+		$('.page-numbers').wrap('<li class="page-item"></li>');
+		$('.page-numbers.current').parent().addClass('active');
+
 	});
 
 }());

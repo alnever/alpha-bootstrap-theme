@@ -70,7 +70,9 @@
 				<?php endwhile; ?>
 			</div>
 			<div class="d-flex flex-row justify-content-center">
-				<?php _e(paginate_links()); ?>
+				<ul class="pagination">
+					<?php _e(paginate_links()); ?>	
+				</ul>
 			</div>
 		<?php endif; ?>
 	</div>
