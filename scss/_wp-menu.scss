@@ -23,17 +23,6 @@ ul.menu {
           @extend .dropdown-item;
         }
 
-        /* 3rd level */
-        & > li.menu-item-has-children {
-
-          @extend .dropdown;
-
-          & > ul.sub-menu {
-            @extend .dropdown-menu;
-          }
-        }
-       
-
       }/* li.menu-item-has-children > ul.sub-menu */
     } /* li.menu-item-has-children */
   } /* li.menu-item */

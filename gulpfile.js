@@ -7,6 +7,7 @@ var rollup = require('gulp-better-rollup');
 var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
 var resolve = require('rollup-plugin-node-resolve');
+var commonjs = require('rollup-plugin-commonjs');
 
 
 var sassSource = './scss/style.scss';
@@ -25,12 +26,15 @@ gulp.task('styles',function() {
 
 gulp.task('scripts', function () {
 	return gulp.src(jsSource)
-		// .pipe(sourcemaps.init())
-		.pipe(rollup({plugins: [resolve(), babel()]},'iife'))
+		.pipe(sourcemaps.init())
+		.pipe(babel({
+			presets: ['@babel/env']
+		}))
+		.pipe(rollup({plugins: [commonjs(), resolve()]},'iife'))
 		.pipe(gulp.dest(jsDest))
 		.pipe(rename({suffix: '.min'}))
 		.pipe(uglify())
-		// .pipe(sourcemaps.write('maps'))
+		.pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest(jsDest));
 });
 
