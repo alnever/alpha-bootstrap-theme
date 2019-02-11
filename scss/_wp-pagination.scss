@@ -1,0 +1,9 @@
+.posts-navigation {
+  & > a:first-child:before {
+    content: "<< ";
+  }
+  & > a:nth-child(2):after
+  {
+    content: " >>";
+  }
+}
