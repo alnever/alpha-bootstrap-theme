@@ -1,0 +1,131 @@
+<body>
+	<h2>Requirements</h2>
+	<ul>
+		<li>Install Node.js and npm</li>
+		<li>
+			Install Gulp globally
+			<pre class="bash">
+				npm install -g gulp-cli
+			</pre>
+		</li>
+	</ul>
+
+	<h2>Create folders for thr project</h2>
+	<pre>
+		mkdir bootstrap-theme
+		mkdir bootstrap-theme/scss
+		mkdir bootstrap-theme/src
+		mkdir bootstrap-theme/theme
+		mkdir bootstrap-theme/theme/css
+		mkdir bootstrap-theme/theme/js
+		cd bootstrap-theme
+	</pre>
+
+	<h2>Initialization of node.js and Install required packages</h2>
+	<ul>
+		<li>
+			Initialize node.js
+			<pre>
+				npm init -y
+			</pre>
+		</li>
+		<li>
+			Install gulp locally
+			<pre>
+				npm install --save-dev gulp
+			</pre>
+		</li>
+		<li>
+			Install bootstrap with packages it dependens option
+			<pre>npm install --save-dev jquery popper.js bootstrap</pre>
+		</li>
+		<li>
+			Install gulp modules to handle SASS
+			<pre>
+				npm install --save-dev gulp-sass gulp-clean-css
+			</pre>
+		</li>
+		<li>
+			Install packages to hangle JavaScripts
+			<pre>
+				npm install --save-dev gulp-babel @babel/core @babel/preset-env
+				npm install --save-dev gulp-sourcemaps
+				npm install --save-dev rollup gulp-better-rollup rollup-plugin-node-resolve
+				npm install --save-dev gulp-rename gulp-minify gulp-uglify
+			</pre>
+		</li>
+	</ul>
+
+
+	<h2>Configure gulp and its tasks</h2>
+	<ul>
+		<li>Create gulpfile.js
+			<pre>
+				touch gulpfile.js
+			</pre>
+		</li>
+		<li>Load required packages
+			<pre>
+				var gulp = require('gulp');
+				var sass = require('gulp-sass');
+				var clean = require('gulp-clean-css');
+				var babel = require('gulp-babel');
+				var uglify = require('gulp-uglify');
+				var rollup = require('gulp-better-rollup');
+				var rename = require('gulp-rename');
+				var sourcemaps = require('gulp-sourcemaps');
+				var resolve = require('rollup-plugin-node-resolve');
+			</pre>
+		</li>
+		<li>
+			Define sources and destinations paths
+			<pre>
+				var sassSource = './scss/style.scss';
+				var cssDest = './theme/css';
+				var jsSource = './src/index.js';
+				var jsDest = './theme/js';
+			</pre>
+		</li>
+		<li>Define task to handle SASS
+			<pre>
+				gulp.task('styles',function() {
+					return gulp.src(sassSource)
+						.pipe(sass().on('error', sass.logError))
+						.pipe(clean())
+						.pipe(gulp.dest(cssDest));
+				});
+			</pre>
+		</li>
+		<li>
+			Define task to handle JS-scripts
+			<pre>
+				gulp.task('scripts', function () {
+					return gulp.src(jsSource)
+						.pipe(sourcemaps.init())
+						.pipe(rollup({plugins: [resolve(), babel()]},'iife'))
+						.pipe(gulp.dest(jsDest))
+						.pipe(rename({suffix: '.min'}))
+						.pipe(uglify())
+						.pipe(sourcemaps.write('maps'))
+						.pipe(gulp.dest(jsDest));
+				});
+			</pre>
+		</li>
+		<li>
+			Define watch-tasks
+			<pre>
+				gulp.task('watch', function(){
+					gulp.watch(sassSource, gulp.series('styles'));
+					gulp.watch(jsSource, gulp.series('scripts'));
+				});
+			</pre>
+		</li>
+	</ul>
+
+	<h2>Run gulp watch task</h2>
+	<pre>
+		gulp watch
+	</pre>
+
+
+</body>

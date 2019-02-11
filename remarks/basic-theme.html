@@ -1,0 +1,112 @@
+<body>
+  <h2>Create a basic wordpress theme</h2>
+  <ul>
+    <li>Choose a theme directory
+      <pre>
+        cd theme
+      </pre>
+    </li>
+    <li>Create a main style file and main PHP-file
+      <pre>
+        touch style.css
+        touch index.php
+      </pre>
+    </li>
+    <li>
+      Fill style.css with a indentification information for the theme
+      <pre>
+        /*
+        Theme Name: Alpha Bootstrap Theme
+        Theme URI: https://alneverov.ru
+        Author: Alex Neverov
+        Author URI: https://alneverov.ru
+        Description: The Wordpress theme powered with Bootstrap
+        Version: 1.0
+        License: GNU General Public License v2 or later
+        License URI: http://www.gnu.org/licenses/gpl-2.0.html
+        Text Domain: alpha
+        Tags: one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+        This theme, like WordPress, is licensed under the GPL.
+        Use it to make something cool, have fun, and share what you've learned with others.
+        */
+      </pre>
+    </li>
+    <li>
+      Create basic page structure within index.php
+      <pre>
+        <!DOCTYPE html>
+        <html>
+        <meta charset="utf-8">
+        <meta lang="en">
+        <head>
+        	<title><?php _e(get_bloginfo('name'))?></title>
+
+        	<!-- styles -->
+        	<link rel="stylesheet" type="text/css" href="<?php _e(get_template_directory_uri()); ?>/style.css">
+        	<link rel="stylesheet" type="text/css" href="<?php _e(get_template_directory_uri()); ?>/css/style.css">
+        	<!-- wp_head -->
+        	<?php wp_head() ; ?>
+        </head>
+        <body>
+        	<!-- navigation -->
+
+
+        	<!-- site header -->
+        	<div class="container">
+        		<div class="jumbotron">
+        			<h1 class="display-4">
+        				<?php bloginfo('name'); ?>
+        			</h1>
+        			<p class="lead">
+        				<?php bloginfo('description'); ?>
+        			</p>
+        		</div>
+        	</div>
+
+        	<!-- site body -->
+        	<div class="container">
+        		<?php if (have_posts()):  ?>
+        			<div class="row">
+        				<?php while(have_posts()): the_post(); ?>
+        					<div class="col-4">
+        						<?php if (has_post_thumbnail()): ?>
+        							<img src="<?php the_post_thumbnail_url(); ?>" />
+        						<?php endif; ?>
+        						<h3><?php the_title(); ?></h3>
+        						<p><?php the_excerpt(); ?></p>
+        						<div class="d-flex flex-row justify-content-end">
+        							<a href="<?php the_permalink(); ?>" class="btn btn-outline-primary">
+        								<?php _e('More...', 'alpha'); ?>
+        							</a>
+        						</div>
+        					</div>
+        				<?php endwhile; ?>
+        			</div>
+        			<div class="d-flex flex-row justify-content-center">
+        				<?php _e(paginate_links()); ?>
+        			</div>
+        		<?php endif; ?>
+        	</div>
+
+
+
+        	<!-- site footer -->
+        	<div class="container">
+        		<div class="jumbotron">
+        			<p class="text-center">Bootstrap Wordpress Theme: Alpha &copy; Alex Neverov, 2019</p>
+        			<p class="text-center">All rights reserved</p>
+        		</div>
+        	</div>
+
+        	<!-- scripts -->
+        	<script src="<?php _e(get_template_directory_uri()); ?>/js/index.js"></script>
+        	<!-- wp_footer -->
+        	<?php wp_footer(); ?>
+        </body>
+        </html>
+
+      </pre>
+    </li>
+
+  </ul>
+</body>

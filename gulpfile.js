@@ -1,0 +1,40 @@
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var clean = require('gulp-clean-css');
+var babel = require('gulp-babel');
+var uglify = require('gulp-uglify');
+var rollup = require('gulp-better-rollup');
+var rename = require('gulp-rename');
+var sourcemaps = require('gulp-sourcemaps');
+var resolve = require('rollup-plugin-node-resolve');
+
+
+var sassSource = './scss/style.scss';
+var cssDest = './css';
+var jsSource = './src/index.js';
+var jsInput = './src/index.js';
+var jsDest = './js';
+
+
+gulp.task('styles',function() {
+	return gulp.src(sassSource)
+		.pipe(sass().on('error', sass.logError))
+		.pipe(clean())
+		.pipe(gulp.dest(cssDest));
+});
+
+gulp.task('scripts', function () {
+	return gulp.src(jsSource)
+		// .pipe(sourcemaps.init())
+		.pipe(rollup({plugins: [resolve(), babel()]},'iife'))
+		.pipe(gulp.dest(jsDest))
+		.pipe(rename({suffix: '.min'}))
+		.pipe(uglify())
+		// .pipe(sourcemaps.write('maps'))
+		.pipe(gulp.dest(jsDest));
+});
+
+gulp.task('watch', function(){
+	gulp.watch(sassSource, gulp.series('styles'));
+	gulp.watch(jsSource, gulp.series('scripts'));
+});

@@ -1,0 +1,40 @@
+ul.menu {
+  @extend .navbar-nav;
+  & > li.menu-item {
+    @extend .nav-item;
+
+    & > a {
+      @extend .nav-link;
+    }
+
+    /* 2nd level */
+    &.menu-item-has-children {
+      @extend .dropdown;
+
+      & > a {
+        @extend .nav-link;
+        @extend .dropdown-toggle;
+      }
+
+      & > ul.sub-menu {
+        @extend .dropdown-menu;
+
+        & > li > a {
+          @extend .dropdown-item;
+        }
+
+        /* 3rd level */
+        & > li.menu-item-has-children {
+
+          @extend .dropdown;
+
+          & > ul.sub-menu {
+            @extend .dropdown-menu;
+          }
+        }
+       
+
+      }/* li.menu-item-has-children > ul.sub-menu */
+    } /* li.menu-item-has-children */
+  } /* li.menu-item */
+} /* ul.menu */

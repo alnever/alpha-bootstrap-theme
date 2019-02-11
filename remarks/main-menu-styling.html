@@ -1,0 +1,146 @@
+<body>
+  <h2>Place Bootstrap navbar onto the page</h2>
+  <p>
+    The navbar was copied from this <a href="https://getbootstrap.com/docs/4.0/components/navbar/">page</a>
+  </p>
+  <pre lang="html">
+    <!-- navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+  </pre>
+
+  <h2>Replace info in the brand area</h2>
+  <pre>
+    <a class="navbar-brand" href="<?php bloginfo('url')?>"><?php bloginfo('name')?></a>
+  </pre>
+
+  <h2>Compare styles of the Bootstrap and WordPress menus</h2>
+  ul.navbar-nav ul.menu
+  li.nav-item li.menu-item
+  a.nav-link a
+  a.active
+
+  <h2>Remove Bootsrap menu and replace it with a WordPress one</h2>
+  <ul>
+    <li>
+      Remove tag <pre>  <ul class="navbar-nav mr-auto"> ... </ul> </pre>
+    </li>
+    <li>
+      <?php
+        wp_nav_menu([
+          'theme_location' => 'primary',
+          'menu' => __('Primary manu', 'alpha'),
+        ]);
+      ?>
+    </li>
+  </ul>
+
+  <h2>Define styles for Wordpress menus based on Bootstrap styles</h2>
+  <pre>
+    touch scss/_wp-menus
+  </pre>
+  <pre file="scss/style.scss">
+    @import "../node_modules/bootstrap/scss/bootstrap";
+
+    @import "wp-menu";
+  </pre>
+  <pre file="scss/_wp-menus.scss">
+    ul.menu {
+      @extend .navbar-nav;
+      & > li.menu-item {
+        @extend .nav-item;
+
+        & > a {
+          @extend .nav-link;
+        }
+      }
+    }
+  </pre>
+
+  <h2>For the 2nd level menu li.menu-item</h2>
+  <pre>
+    &.menu-item-has-children {
+      @extend .dropdown;
+      & > a {
+        @extend .nav-link;
+        @extend .dropdown-toggle;
+      }
+      & > ul.sub-menu {
+        @extend .dropdown-menu;
+
+        & > li > a {
+          @extend .dropdown-item;
+        }
+      }
+    }
+  </pre>
+
+  <h2>Add attributes to make Bootsrap work with WordPress menus as with its own</h2>
+  <pre>
+  $(function() {
+    var dropdownCount = 1;
+
+    $("li.menu-item-has-children > a").each(function() {
+
+      $(this).attr('href',"#");
+      $(this).attr('role','button');
+      $(this).attr('data-toggle','dropdown');
+      $(this).attr('aria-haspopup','true');
+      $(this).attr('aria-expanded','false');
+
+      $(this).attr('id','navbarDropdown' + dropdownCount);
+
+      $(this).siblings('ul.sub-menu').addClass('dropdown-menu');
+
+      $(this).siblings('ul.sub-menu').attr('aria-labelledby', $(this).attr('id'));
+
+      dropdownCount++;
+    });
+  });
+    
+  </pre>
+
+  <h2>For 3rd level</h2>
+  <pre>
+    
+  </pre>
+
+
+
+
+
+
+</body>
