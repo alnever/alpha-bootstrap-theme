@@ -1,0 +1,11 @@
+.widget_calendar {
+    list-style-type: none;
+
+    table {
+        @extend .table;
+
+        td {
+            padding: .6rem;
+        }
+    }
+}

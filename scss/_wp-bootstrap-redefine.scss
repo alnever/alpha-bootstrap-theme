@@ -1,0 +1,13 @@
+.row {
+    flex-direction: column;
+
+    @include media-breakpoint-up(lg) {
+        flex-direction: row;
+    }
+}
+
+[class^='col-'] {
+    @include media-breakpoint-down(md) {
+        max-width: 100%;
+    }
+}

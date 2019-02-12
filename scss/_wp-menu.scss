@@ -1,3 +1,4 @@
+/* standard menu */
 ul.menu {
   @extend .navbar-nav;
   & > li.menu-item {
@@ -28,6 +29,8 @@ ul.menu {
   } /* li.menu-item */
 } /* ul.menu */
 
+/* pages menu */
+
 div.menu > ul {
   @extend .navbar-nav;
   & > li.page_item {
@@ -57,3 +60,20 @@ div.menu > ul {
     } /* li.page_item_has_children */
   } /* li.page_item */
 } /* ul.menu */
+
+
+/* widget_nav_menu */
+
+.widget_nav_menu {
+    list-style-type: none;
+
+    & > div {
+        & > ul.menu {
+            @extend .list-group;
+
+            & > li.menu-item {
+                @extend .list-group-item;
+            }
+        }
+    }
+}
