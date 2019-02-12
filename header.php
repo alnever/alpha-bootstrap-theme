@@ -20,7 +20,7 @@
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
 
-		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
 
 				<?php
 					wp_nav_menu([
@@ -30,6 +30,10 @@
 					]);
 				?>
 
+				<!-- search form -->
+				<div>
+					<?php dynamic_sidebar(header_search_form); ?>
+				</div>
 		  </div>
 		</nav>
 	</div>
