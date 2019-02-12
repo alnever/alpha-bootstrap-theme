@@ -1,3 +1,17 @@
+    <!-- footer widgets -->
+    <div class="container p-0 mb-2">
+        <div class="row m-0">
+            <div class="col-4 p-2">
+                <?php dynamic_sidebar('footer_left_area'); ?>
+            </div>
+            <div class="col-4 p-2">
+                <?php dynamic_sidebar('footer_center_area'); ?>
+            </div>
+            <div class="col-4 p-2">
+                <?php dynamic_sidebar('footer_right_area'); ?>
+            </div>
+        </div>
+    </div>
     <!-- site footer -->
     <div class="container p-0">
       <div class="jumbotron">

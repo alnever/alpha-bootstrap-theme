@@ -1,0 +1,63 @@
+ul.post-categories {
+  padding-left: 0;
+
+  li {
+    display: inline-flex;
+    list-style-type: none;
+
+    & > a {
+      @extend .badge;
+      @extend .badge-info;
+      @extend .badge-pill;
+      padding: 0.5em;
+      margin-bottom: 0.1em;
+    }
+  }
+}
+
+.widget_categories,
+.widget_tag_cloud {
+    list-style-type: none;
+    ul {
+        padding-left: 0;
+
+        li {
+            display: inline-flex;
+            list-style-type: none;
+
+            & > a {
+                @extend .badge;
+                @extend .badge-secondary;
+                @extend .badge-pill;
+                padding: 0.5em;
+                margin-bottom: 0.1em;
+            }
+        }
+    }
+}
+
+.widget_archive {
+    list-style-type: none;
+    ul {
+        @extend .list-group;
+
+        li {
+            @extend .list-group-item;
+        }
+    }
+}
+
+.widget_tag_cloud {
+    list-style-type: none;
+
+    & > div.tagcloud {
+
+        & > a.tag-cloud-link {
+            @extend .badge;
+            @extend .badge-light;
+            @extend .badge-pill;
+            padding: 0.5em;
+            margin-bottom: 0.1em;
+        }
+    }
+}

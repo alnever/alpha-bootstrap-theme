@@ -4,7 +4,7 @@
     table {
         @extend .table;
 
-        td {
+        td, th {
             padding: .6rem;
         }
     }
