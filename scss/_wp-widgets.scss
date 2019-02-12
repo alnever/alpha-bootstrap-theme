@@ -1,0 +1,164 @@
+/*
+* The widgets shows all categories
+*/
+.widget_categories {
+    list-style-type: none;
+    ul {
+        padding-left: 0;
+
+        li {
+            display: inline-flex;
+            list-style-type: none;
+
+            & > a {
+                @extend .badge;
+                @extend .badge-secondary;
+                @extend .badge-pill;
+                padding: 0.5em;
+                margin-bottom: 0.1em;
+            }
+        }
+    }
+    /* drop-down variant */
+    label {
+        display: none;
+    }
+
+    select {
+        @extend .form-control;
+    }
+}
+
+/*
+* The widget shows list of monthes - archive
+*/
+
+.widget_archive {
+    list-style-type: none;
+    ul {
+        @extend .list-group;
+
+        li {
+            @extend .list-group-item;
+        }
+    }
+    /* drop-down variant */
+    label {
+        display: none;
+    }
+
+    select {
+        @extend .form-control;
+    }
+}
+
+/*
+* Tag cloud widget
+*/
+
+.widget_tag_cloud {
+    list-style-type: none;
+
+    & > div.tagcloud {
+
+        & > a.tag-cloud-link {
+            @extend .badge;
+            @extend .badge-light;
+            @extend .badge-pill;
+            padding: 0.5em;
+            margin-bottom: 0.1em;
+        }
+    }
+}
+
+/*
+* Search form
+*/
+
+.widget_search {
+	list-style-type: none;
+
+	form.searchform {
+		@extend .form-inline;
+
+		& > div {
+			display: flex;
+			flex-direction: row;
+
+			label {
+				display: none;
+			}
+
+			input[type=text] {
+				@extend .form-control;
+			}
+
+			input[type=submit] {
+				@extend .btn;
+				@extend .btn-outline-secondary;
+			}
+		}
+	}
+}
+
+/*
+* Recent posts
+*/
+
+.widget_recent_entries {
+    list-style-type: none;
+
+    ul {
+        padding-left: 0;
+
+        li {
+            list-style-type: none;
+        }
+    }
+}
+
+.widget_meta {
+    list-style-type: none;
+
+    ul {
+        padding-left: 0;
+
+        li {
+            list-style-type: none;
+        }
+    }
+}
+
+/*
+*  Navigation menu for the sidebar
+*/
+
+.widget_nav_menu {
+    list-style-type: none;
+
+    & > div {
+        & > ul.menu {
+            @extend .list-group;
+
+            & > li.menu-item {
+                @extend .list-group-item;
+            }
+        }
+    }
+}
+
+/*
+* Calendar widget
+*/
+
+.widget_calendar {
+    list-style-type: none;
+
+    table {
+        @extend .table;
+
+        td, th {
+            padding: .6rem;
+        }
+    }
+}

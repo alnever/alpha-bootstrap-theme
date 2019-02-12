@@ -12,6 +12,14 @@
 		</div>
 	</div>
 
+	<!-- header widgets-->
+	<div class="container p-0">
+		<?php
+			dynamic_sidebar('header_widgets');
+		?>
+	</div>
+	
+
 	<!-- site body -->
 	<div class="container p-0 mb-2">
 		<div class="row">

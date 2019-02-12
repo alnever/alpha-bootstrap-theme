@@ -12,7 +12,7 @@
 		</div>
 	</div>
 
-	<!-- sticky post -->
+	<!-- header widgets-->
 	<div class="container p-0">
 		<?php
 			dynamic_sidebar('header_widgets');
