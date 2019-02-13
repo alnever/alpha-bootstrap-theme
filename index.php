@@ -54,7 +54,7 @@
 							<p><?php the_excerpt(); ?></p>
 							<p><?php the_category(); ?></p>
 							<div class="d-flex flex-row justify-content-end">
-								<a href="<?php the_permalink(); ?>" class="btn btn-success">
+								<a href="<?php the_permalink(); ?>" class="btn btn-secondary">
 									<?php _e('More...', 'alpha'); ?>
 								</a>
 							</div>
@@ -81,7 +81,7 @@
 								<p><?php the_excerpt(); ?></p>
 								<p><?php the_category(); ?></p>
 								<div class="d-flex flex-row justify-content-end">
-									<a href="<?php the_permalink(); ?>" class="btn btn-outline-primary">
+									<a href="<?php the_permalink(); ?>" class="btn btn-outline-secondary">
 										<?php _e('More...', 'alpha'); ?>
 									</a>
 								</div>
