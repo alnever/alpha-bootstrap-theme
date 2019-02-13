@@ -1,14 +1,14 @@
 <?php get_header(); ?>
 
 	<!-- site header -->
-	<div class="container p-0">
-		<div class="jumbotron">
-			<h1 class="display-4">
+	<div class="header-50">
+		<div class="header-text-block">
+			<div class="header-title">
 				<?php bloginfo('name'); ?>
-			</h1>
-			<p class="lead">
-				<?php bloginfo('description'); ?>
-			</p>
+			</div>
+			<div class="header-text">
+				<?php the_archive_title(); ?>
+			</div>
 		</div>
 	</div>
 
@@ -18,7 +18,7 @@
 			dynamic_sidebar('header_widgets');
 		?>
 	</div>
-	
+
 
 	<!-- site body -->
 	<div class="container p-0 mb-2">

@@ -1,0 +1,79 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 100%;
+    min-height: auto;
+
+    @include media-breakpoint-up(lg) {
+        min-height: 100vh;
+    }
+
+    margin-bottom: 2em;
+
+    background-image: url(../images/header.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    text-align: center;
+
+    .header-text-block {
+        background-color: #AAAAAAAA;
+    }
+
+    .header-title {
+        @extend .display-1;
+        color: $primary;
+    }
+
+    .header-text {
+        @extend .h2;
+        color: $secondary;
+    }
+
+}
+
+.header-50 {
+    @extend .header;
+    min-height: auto;
+
+    @include media-breakpoint-up(lg) {
+        min-height: 50-vh;
+    }
+
+    margin-bottom: 0.5em;
+
+    .header-title {
+        @extend .display-3;
+        color: $primary;
+    }
+
+    .header-text {
+        @extend .h3;
+        color: $secondary;
+    }
+}
+
+.header-post {
+    @extend .header;
+    min-height: auto;
+
+    @include media-breakpoint-up(lg) {
+        min-height: 50vh;
+    }
+
+    margin-bottom: 0.5em;
+
+    .post-title {
+        @extend .display-3;
+        color: $primary;
+    }
+
+    .post-info {
+        @extend .h4;
+        color: $secondary;
+    }
+
+}

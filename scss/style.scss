@@ -1,4 +1,4 @@
-
+@import "variables";
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
@@ -8,6 +8,8 @@
 @import "wp-pagination";
 @import "wp-taxonomy";
 @import "wp-widgets";
+
+@import "theme-header";
 
 * {
 	box-sizing: border-box;
