@@ -177,6 +177,23 @@
 
         li {
             list-style-type: none;
+
+            display: flex;
+            flex-direction: column;
+
+            padding: 1em;
+            margin-bottom: 0.5em;
+
+            border: 1px solid $info;
+            border-radius: $border-radius;
+
+            & > a {
+                color: $info;
+            }
+
+            & > span.post-date {
+                font-size: smaller;
+            }
         }
     }
 }
@@ -185,10 +202,14 @@
     list-style-type: none;
 
     ul {
-        padding-left: 0;
+        @extend .list-group;
 
-        li {
-            list-style-type: none;
+        & > li {
+            @extend .list-group-item;
+
+            & > a {
+                color: $info;
+            }
         }
     }
 }
@@ -206,6 +227,10 @@
 
             & > li.menu-item {
                 @extend .list-group-item;
+
+                & > a {
+                    color: $info;
+                }
             }
         }
     }
@@ -223,6 +248,15 @@
 
         td, th {
             padding: .6rem;
+
+            &:not([id='prev']),
+            &:not([id='next']) {
+                & > a {
+                    @extend .badge;
+                    @extend .badge-info;
+                    padding : 0.5em;
+                }
+            }
         }
     }
 }
