@@ -3,22 +3,68 @@
 */
 .widget_categories {
     list-style-type: none;
-    ul {
-        padding-left: 0;
+    & > ul {
+        @extend .list-group;
 
-        li {
-            display: inline-flex;
-            list-style-type: none;
+        & > li.cat-item {
+            @extend .list-group-item;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
 
             & > a {
-                @extend .badge;
-                @extend .badge-secondary;
-                @extend .badge-pill;
-                padding: 0.5em;
-                margin-bottom: 0.1em;
+                color: $info;
             }
-        }
-    }
+
+            & > span {
+                @extend .badge;
+                @extend .badge-info;
+                padding: 0.5em;
+            }
+        } /* li.cat-item */
+
+        li.with-sub-categories {
+            display: flex;
+            flex-direction: column;
+
+            & > .super-category {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                & > a {
+                    color: $info;
+                }
+
+                & > span {
+                    @extend .badge;
+                    @extend .badge-info;
+                    padding: 0.5em;
+                }
+            } /* .super-category */
+
+            & > ul {
+                display: flex;
+                flex-direction: column;
+
+                li:not(.with-sub-categories) {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    a {
+                        color: $info;
+                    }
+                    & > span {
+                        @extend .badge;
+                        @extend .badge-info;
+                        padding: 0.5em;
+                    }
+                } /* li:not(.with-sub-categories) */
+            } /* ul - list of child categories */
+        } /* li.with-sub-categories */
+    } /* ul - list of categories*/
+
     /* drop-down variant */
     label {
         display: none;
@@ -40,6 +86,19 @@
 
         li {
             @extend .list-group-item;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            & > a {
+                color: $info;
+            }
+
+            & > span {
+                @extend .badge;
+                @extend .badge-info;
+                padding: 0.5em;
+            }
         }
     }
     /* drop-down variant */
@@ -57,16 +116,21 @@
 */
 
 .widget_tag_cloud {
+    text-align:center;
     list-style-type: none;
 
     & > div.tagcloud {
 
         & > a.tag-cloud-link {
-            @extend .badge;
-            @extend .badge-light;
-            @extend .badge-pill;
-            padding: 0.5em;
-            margin-bottom: 0.1em;
+            color: $info;
+            white-space: nowrap;
+
+            & > span.tag-link-count {
+                @extend .badge;
+                @extend .badge-info;
+                padding: 0.5em;
+                margin: 0.1em;
+            }
         }
     }
 }

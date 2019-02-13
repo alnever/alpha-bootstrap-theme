@@ -8,7 +8,6 @@ ul.post-categories {
     & > a {
       @extend .badge;
       @extend .badge-info;
-      @extend .badge-pill;
       padding: 0.5em;
       margin-bottom: 0.1em;
     }
