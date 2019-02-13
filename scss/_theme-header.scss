@@ -57,12 +57,12 @@
 }
 
 .header-post {
-    @extend .header;
-    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-    @include media-breakpoint-up(lg) {
-        min-height: 50vh;
-    }
+    min-height: auto;
+    background: none;
 
     margin-bottom: 0.5em;
 

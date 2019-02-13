@@ -3,24 +3,27 @@
 	<?php if (have_posts()):  ?>
 	<?php while(have_posts()): the_post(); ?>
 		<!-- site header -->
-		<div class="header-post" <?php _e((has_post_thumbnail() ? 'style="background-image: url(' . get_the_post_thumbnail_url() . ')"' : '')); ?>>
-			<div class="header-text-block">
-				<div class="post-title">
-					<?php the_title(); ?>
-				</div>
-				<div class="post-info">
-					<span><?php the_date(); ?></span>
-					<span><?php the_author_link(); ?></span>
-				</div>
-			</div>
-		</div>
 
 		<!-- site body -->
-		<div class="container p-0">
+		<div class="container p-0 border border-info rounded">
+				<?php if (has_post_thumbnail()): ?>
+					<img src="<?php the_post_thumbnail_url(); ?>" />
+				<?php endif; ?>
 
-				<div class="row m-0">
 
-					<div class="col-12 pb-2 pt-2 border border-info rounded">
+					<div class="col-12 pb-2 pt-2 ">
+						<div class="header-post">
+							<div class="header-text-block">
+								<div class="post-title">
+									<?php the_title(); ?>
+								</div>
+								<div class="post-info">
+									<span><?php the_date(); ?></span>
+									<span><?php the_author_link(); ?></span>
+								</div>
+							</div>
+						</div>
+
 						<p><?php the_content(); ?></p>
 		    			<hr>
 						<p><?php the_category(); ?></p>
@@ -31,7 +34,6 @@
 		      			<?php next_post_link('%link'); ?>
 					</div>
 
-				</div>
 
 		</div>
 	<?php endwhile; ?>
