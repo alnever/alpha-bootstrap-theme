@@ -1,0 +1,53 @@
+.comments {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1em;
+
+    .comments-list {
+        margin: 0;
+        padding: 0;
+
+        .comment {
+            padding: 2em;
+            margin-bottom: 0.5em;
+
+            background-color: $light;
+
+            list-style-type: none;
+
+            .comment {
+                padding: 1em;
+                margin-bottom: 0;
+
+                border: none;
+            }
+        }
+    }
+
+    .comment-form {
+        display: flex;
+        flex-direction: column;
+
+        padding: 1em;
+        margin-bottom: 0.5em;
+
+        border: 1px solid $primary;
+        border-radius: $border-radius;
+
+        background-color: $light;
+
+        input:not([type='submit']) {
+            @extend .form-control;
+        }
+
+        textarea {
+            @extend .form-control;
+        }
+
+        input[type='submit'] {
+            @extend .btn;
+            @extend .btn-primary;
+        }
+    }
+}
