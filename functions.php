@@ -5,6 +5,7 @@
 
 	// allow additional features within the theme
 	add_theme_support('post-thumbnails');
+	add_theme_support('custom-header');
 
 	// register navigation menus
 	register_nav_menus([

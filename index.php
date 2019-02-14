@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 	<!-- site header -->
-	<div class="header">
+	<div class="header" style="background-image: url(<?php header_image(); ?>)">
 		<div class="header-text-block">
 			<div class="header-title">
 				<?php bloginfo('name'); ?>
